@@ -1,6 +1,6 @@
 <?php session_start();
 
-require_once "db.php";
+require_once "../db_config/db.php";
 
 header("Access-Control-Allow-Origin: *");
 header("Content-type:application/json;charset=utf-8");
@@ -15,9 +15,8 @@ $email = $userData["email"];
 
 if (isset($_SESSION["authenticated"]))
 {
-    $response["authenticated"] = true;
-    echo json_encode($response);
-    die();
+    $_SESSION = [];
+    session_destroy();
 }
 
 if (!strlen($userData["password"]))
@@ -39,6 +38,8 @@ if ($result && $password_valid)
     $_SESSION["user_id"] = $result["id"];
 
     $response["authenticated"] = true;
+    $response['id'] = $result['id'];
+    $response['name'] = $result['name'];
 }
 else
 {
