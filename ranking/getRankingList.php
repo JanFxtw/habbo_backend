@@ -5,7 +5,7 @@ require_once "../db_config/db.php";
 header("Access-Control-Allow-Origin: *");
 header("Content-type:application/json;charset=utf-8");
 
-$statement = $pdo->prepare("SELECT users.name, users.points FROM users ORDER BY points DESC");
+$statement = $pdo->prepare("SELECT users.name, users.points, users.id FROM users ORDER BY points DESC");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 

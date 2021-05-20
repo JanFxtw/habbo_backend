@@ -19,7 +19,7 @@ $editId = $pdo->lastInsertId();
 
 foreach($users as $user)
 {
-    $statement= $pdo->prepare("UPDATE users SET points = points + ? WHERE id = ?");
+    $statement= $pdo->prepare("UPDATE users SET points = ? WHERE id = ?");
     $statement->execute([$points, $user['id']]);
 
     $statement= $pdo->prepare("INSERT INTO point_log (edit_action_id, recipient_id) VALUES (?, ?)");

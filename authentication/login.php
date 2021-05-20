@@ -40,6 +40,7 @@ if ($result && $password_valid)
     $response["authenticated"] = true;
     $response['id'] = $result['id'];
     $response['name'] = $result['name'];
+    $response['rank'] = $result['rank'];
 }
 else
 {
